@@ -1,0 +1,24 @@
+Label {
+    -fx-alignment: center;
+    -fx-label-padding: 7px;
+}
+HBox {
+    -fx-spacing: 7px;
+    -fx-alignment: center;
+}
+VBox {
+    -fx-alignment: center;
+}
+TextField {
+    -fx-padding: 5px;
+    -fx-border-color: black;
+    -fx-max-width: 120px;
+}
+Button {
+    -fx-background-color: #ccc;
+    -fx-border-color: black;
+    -fx-max-width: 245px;
+}
+Button:hover {
+    -fx-background-color: #eee;
+}
