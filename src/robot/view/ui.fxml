@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="robot.view.Controller">
+   <children>
+      <SplitPane dividerPositions="0.3" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane>
+               <children>
+                  <VBox prefHeight="398.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Robot" />
+                        <HBox>
+                           <children>
+                              <TextField fx:id="robotX" />
+                              <TextField fx:id="robotY" />
+                           </children>
+                        </HBox>
+                         <Label text="Map size" />
+                         <HBox>
+                             <children>
+                                 <TextField fx:id="mapSizeX" />
+                                 <TextField fx:id="mapSizeY" />
+                             </children>
+                         </HBox>
+                         <Label text="Transmitter 1" />
+                         <HBox>
+                             <children>
+                                 <TextField fx:id="transmitter1X" />
+                                 <TextField fx:id="transmitter1Y" />
+                             </children>
+                         </HBox>
+                         <Label text="Transmitter 2" />
+                         <HBox>
+                             <children>
+                                 <TextField fx:id="transmitter2X" />
+                                 <TextField fx:id="transmitter2Y" />
+                             </children>
+                         </HBox>
+                         <Label text="Transmitter 3" />
+                         <HBox>
+                             <children>
+                                 <TextField fx:id="transmitter3X" />
+                                 <TextField fx:id="transmitter3Y" />
+                             </children>
+                         </HBox>
+                        <Button onAction="#simulate" alignment="CENTER" mnemonicParsing="false" text="Simulate" />
+                     </children>
+                  </VBox>
+               </children>
+          </AnchorPane>
+          <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: black">
+               <children>
+                  <Canvas fx:id="canvas" height="200.0" width="200.0" />
+               </children>
+          </AnchorPane>
+        </items>
+      </SplitPane>
+   </children>
+</AnchorPane>
