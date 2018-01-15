@@ -1,4 +1,4 @@
-package robot;
+package com.robot.model;
 
 public class Transmitter {
     private int x;

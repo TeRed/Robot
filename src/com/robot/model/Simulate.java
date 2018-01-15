@@ -1,4 +1,4 @@
-package robot;
+package com.robot.model;
 
 import java.util.ArrayList;
 import java.util.List;

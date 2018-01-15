@@ -1,4 +1,4 @@
-package robot.view;
+package com.robot.view;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -8,14 +8,11 @@ import javafx.stage.Stage;
 
 
 public class App extends Application {
-    private Scene scene;
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
-        primaryStage.setTitle("App");
-        scene = new Scene(root);
-        primaryStage.setScene(scene);
+        primaryStage.setTitle("Robot simulation");
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 

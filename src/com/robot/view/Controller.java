@@ -1,4 +1,4 @@
-package robot.view;
+package com.robot.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
@@ -6,7 +6,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-import robot.Simulate;
+import com.robot.model.Simulate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +40,24 @@ public class Controller {
     private GraphicsContext gc;
 
     @FXML
+    public void reset(ActionEvent actionEvent) {
+        mapSizeX.clear();
+        mapSizeY.clear();
+
+        robotX.clear();
+        robotY.clear();
+
+        transmitter1X.clear();
+        transmitter1Y.clear();
+
+        transmitter2X.clear();
+        transmitter2Y.clear();
+
+        transmitter3X.clear();
+        transmitter3Y.clear();
+    }
+
+    @FXML
     public void simulate(ActionEvent actionEvent) {
         List<String> arguments = new ArrayList<>(10);
         arguments.add(mapSizeX.getText());
@@ -53,38 +71,47 @@ public class Controller {
         arguments.add(transmitter3X.getText());
         arguments.add(transmitter3Y.getText());
 
+        //Receiving data
         List<Integer> retval = Simulate.simulate(arguments);
 
+        //Canvas/map
         mapSizeX.setText(retval.get(0).toString());
         mapSizeY.setText(retval.get(1).toString());
         canvas.setWidth(retval.get(0));
         canvas.setHeight(retval.get(1));
 
         gc = canvas.getGraphicsContext2D();
-        gc.setFill(Color.PURPLE);
+        gc.setFill(Color.DARKORANGE);
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
-        robotX.setText(retval.get(2).toString());
-        robotY.setText(retval.get(3).toString());
-
-        gc.setFill(Color.RED);
-        gc.fillOval(retval.get(2)-1, retval.get(3)-1, 3, 3);
-
-        gc.setFill(Color.WHITE);
-
+        //Transmitters
         transmitter1X.setText(retval.get(4).toString());
         transmitter1Y.setText(retval.get(5).toString());
-        gc.fillOval(retval.get(4)-1, retval.get(5)-1, 3, 3);
 
         transmitter2X.setText(retval.get(6).toString());
         transmitter2Y.setText(retval.get(7).toString());
-        gc.fillOval(retval.get(6)-1, retval.get(7)-1, 3, 3);
 
         transmitter3X.setText(retval.get(8).toString());
         transmitter3Y.setText(retval.get(9).toString());
-        gc.fillOval(retval.get(8)-1, retval.get(9)-1, 3, 3);
+
+        gc.setFill(Color.BLACK);
+
+        gc.beginPath();
+        gc.moveTo(retval.get(4), retval.get(5));
+        gc.lineTo(retval.get(6), retval.get(7));
+        gc.lineTo(retval.get(8), retval.get(9));
+        gc.lineTo(retval.get(4), retval.get(5));
+        gc.stroke();
+
+        //Robot start and end position
+        robotX.setText(retval.get(2).toString());
+        robotY.setText(retval.get(3).toString());
+
+        gc.setFill(Color.WHITE);
+        gc.fillOval(retval.get(2)-1, retval.get(3)-1, 3, 3);
 
         gc.setFill(Color.GREEN);
         gc.fillOval(retval.get(10)-1, retval.get(11)-1, 3, 3);
+        gc.strokeText(retval.get(10) + ", " + retval.get(11), retval.get(10) + 5, retval.get(11) - 5);
     }
 }

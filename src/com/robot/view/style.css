@@ -17,7 +17,6 @@ TextField {
 Button {
     -fx-background-color: #ccc;
     -fx-border-color: black;
-    -fx-max-width: 245px;
 }
 Button:hover {
     -fx-background-color: #eee;

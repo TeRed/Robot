@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane stylesheets="@style.css" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="robot.view.Controller">
+<AnchorPane stylesheets="@style.css" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.robot.view.Controller">
     <SplitPane dividerPositions="0.3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane>
             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -43,7 +43,11 @@
                     <TextField fx:id="transmitter3Y" />
                 </HBox>
 
-                <Button onAction="#simulate" mnemonicParsing="false" text="Simulate" />
+                <Label text="Options" />
+                <HBox>
+                    <Button onAction="#simulate" mnemonicParsing="false" text="Simulate" />
+                    <Button onAction="#reset" mnemonicParsing="false" text="Reset" />
+                </HBox>
             </VBox>
         </AnchorPane>
         <AnchorPane>
