@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Robot {
+    //Robot position
     private int x;
     private int y;
 
@@ -34,16 +35,22 @@ public class Robot {
         this.y = y;
     }
 
+    //Goes to given transmitter
+    //If 'returnHalfWay' set true, robot also goes back half way but in shortest line
     private void goToTransmitter(Transmitter transmitter, boolean returnHalfWay) {
         int moveRight = 0;
         int moveDown = 0;
         int lastMove = -1;
 
         while(true) {
+            //Possible moves
             int[][] toCheckTemplate = {{x-1,y-1},{x,y-1},{x+1,y-1},{x+1,y},{x+1,y+1},{x,y+1},{x-1,y+1},{x-1,y}};
+
+            //Moves to be checked
             int[] toCheck;
             List<Double> signals = new ArrayList<>();
 
+            //Checking which moves need to be checked
             if(lastMove == -1) {
                 toCheck = new int[toCheckTemplate.length];
                 for(int i = 0; i < toCheck.length; i++) toCheck[i] = i;
@@ -55,16 +62,19 @@ public class Robot {
                 toCheck[2] = (lastMove+1) == 8 ? 0 : (lastMove+1);
             }
 
+            //Signals in all moves
             for(int index : toCheck) {
                 signals.add(transmitter.getSignal(toCheckTemplate[index][0], toCheckTemplate[index][1]));
             }
 
+            //Getting max signal
             int maxSignalId = 0;
             for(int i = 0; i < signals.size(); i++) {
                 if(signals.get(i) > signals.get(maxSignalId)) maxSignalId = i;
             }
             int maxId = toCheck[maxSignalId];
 
+            //Counting all moves
             if(toCheckTemplate[maxId][0] > x) moveRight++;
             else if(toCheckTemplate[maxId][0] < x) moveRight--;
 
@@ -74,6 +84,7 @@ public class Robot {
             this.setXY(toCheckTemplate[maxId][0], toCheckTemplate[maxId][1]);
             lastMove = maxId;
 
+            //Checking if we've reached transmitter
             if(Double.POSITIVE_INFINITY == signals.get(maxSignalId)) break;
         }
         if(returnHalfWay) this.setXY(x - (moveRight/2), y - (moveDown/2));
@@ -90,6 +101,7 @@ public class Robot {
             Collections.swap(transmitters, 0, 1);
     }
 
+    //Robot goes between three (of at least three) transmitters
     public void setPositionBetweenTransmitters(List<Transmitter> transmitters) {
 
         sortTransmitters(transmitters);

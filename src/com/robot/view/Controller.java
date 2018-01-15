@@ -59,6 +59,8 @@ public class Controller {
 
     @FXML
     public void simulate(ActionEvent actionEvent) {
+
+        //Reading user input
         List<String> arguments = new ArrayList<>(10);
         arguments.add(mapSizeX.getText());
         arguments.add(mapSizeY.getText());
@@ -71,10 +73,10 @@ public class Controller {
         arguments.add(transmitter3X.getText());
         arguments.add(transmitter3Y.getText());
 
-        //Receiving data
+        //Receiving data after simulation
         List<Integer> retval = Simulate.simulate(arguments);
 
-        //Canvas/map
+        //Canvas/map refreshing
         mapSizeX.setText(retval.get(0).toString());
         mapSizeY.setText(retval.get(1).toString());
         canvas.setWidth(retval.get(0));
@@ -84,17 +86,20 @@ public class Controller {
         gc.setFill(Color.DARKORANGE);
         gc.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
-        //Transmitters
+        //Transmitters refreshing
+        gc.setFill(Color.BROWN);
+
         transmitter1X.setText(retval.get(4).toString());
         transmitter1Y.setText(retval.get(5).toString());
+        gc.fillOval(retval.get(4)-1, retval.get(5)-1, 3, 3);
 
         transmitter2X.setText(retval.get(6).toString());
         transmitter2Y.setText(retval.get(7).toString());
+        gc.fillOval(retval.get(6)-1, retval.get(7)-1, 3, 3);
 
         transmitter3X.setText(retval.get(8).toString());
         transmitter3Y.setText(retval.get(9).toString());
-
-        gc.setFill(Color.BLACK);
+        gc.fillOval(retval.get(8)-1, retval.get(9)-1, 3, 3);
 
         gc.beginPath();
         gc.moveTo(retval.get(4), retval.get(5));
@@ -103,12 +108,13 @@ public class Controller {
         gc.lineTo(retval.get(4), retval.get(5));
         gc.stroke();
 
-        //Robot start and end position
+        //Robot start and end position refreshing
         robotX.setText(retval.get(2).toString());
         robotY.setText(retval.get(3).toString());
 
         gc.setFill(Color.WHITE);
         gc.fillOval(retval.get(2)-1, retval.get(3)-1, 3, 3);
+        gc.strokeText(retval.get(2) + ", " + retval.get(3), retval.get(2) + 5, retval.get(3) - 5);
 
         gc.setFill(Color.GREEN);
         gc.fillOval(retval.get(10)-1, retval.get(11)-1, 3, 3);

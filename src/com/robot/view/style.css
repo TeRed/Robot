@@ -8,6 +8,7 @@ HBox {
 }
 VBox {
     -fx-alignment: center;
+    -fx-spacing: 8px;
 }
 TextField {
     -fx-padding: 5px;

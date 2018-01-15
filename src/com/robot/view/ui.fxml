@@ -13,31 +13,33 @@
     <SplitPane dividerPositions="0.3" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <AnchorPane>
             <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <Label text="Robot" />
-                <HBox>
-                    <TextField fx:id="robotX" />
-                    <TextField fx:id="robotY" />
-                </HBox>
-
                 <Label text="Map size" />
                 <HBox>
                     <TextField fx:id="mapSizeX" />
                     <TextField fx:id="mapSizeY" />
                 </HBox>
 
-                <Label text="Transmitter 1" />
+                <Label text="Robot final position" style="-fx-background-color: green; -fx-border-color: black;" />
+
+                <Label text="Robot initial position" style="-fx-background-color: white; -fx-border-color: black;" />
+                <HBox>
+                    <TextField fx:id="robotX" />
+                    <TextField fx:id="robotY" />
+                </HBox>
+
+                <Label text="Transmitter 1" style="-fx-background-color: brown; -fx-border-color: black;" />
                 <HBox>
                     <TextField fx:id="transmitter1X" />
                     <TextField fx:id="transmitter1Y" />
                 </HBox>
 
-                <Label text="Transmitter 2" />
+                <Label text="Transmitter 2" style="-fx-background-color: brown; -fx-border-color: black;" />
                 <HBox>
                     <TextField fx:id="transmitter2X" />
                     <TextField fx:id="transmitter2Y" />
                 </HBox>
 
-                <Label text="Transmitter 3" />
+                <Label text="Transmitter 3" style="-fx-background-color: brown; -fx-border-color: black;" />
                 <HBox>
                     <TextField fx:id="transmitter3X" />
                     <TextField fx:id="transmitter3Y" />
